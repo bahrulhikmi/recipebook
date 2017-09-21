@@ -3,7 +3,10 @@ import './NewRecipe.html';
 import './Recipe.html';
 
 Template.Recipes.onCreated(function recipesOnCreated(){
-    Meteor.subscribe('recipes');
+    var self = this;
+    self.autorun(function(){
+      self.subscribe('recipes');
+    });
   });
 
 Template.Recipes.helpers({
