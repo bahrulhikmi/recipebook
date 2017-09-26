@@ -1,6 +1,5 @@
 import './Recipes.html';
 import './NewRecipe.html';
-import './Recipe.html';
 
 Template.Recipes.onCreated(function recipesOnCreated(){
     var self = this;
@@ -14,3 +13,15 @@ Template.Recipes.helpers({
       return Recipes.find({});
     },
   });
+
+Template.NewRecipe.events({
+  'click .fa-close': function(){
+      Session.set('newRecipe', false);
+  }
+});
+
+Template.Recipes.events({
+  'click .new-recipe': function(){
+      Session.set('newRecipe', true);
+  }
+});
